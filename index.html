@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>For Opal ✨</title>
+  <title>Surprise for Opal 💞</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +25,7 @@
       --shadow: 0 30px 120px rgba(0,0,0,.55);
       --radius: 26px;
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -38,41 +39,41 @@
     }
     a{color:inherit;text-decoration:none}
 
-    /* Scene */
+    /* Scene (optimized for performance) */
     .scene{ position:fixed; inset:0; z-index:-2; overflow:hidden; }
     #stars{ position:absolute; inset:0; width:100%; height:100%; }
     .aurora{
-      position:absolute; width:1100px; height:600px;
-      filter: blur(45px); opacity:.6; border-radius: 999px;
+      position:absolute; width:1000px; height:560px;
+      filter: blur(28px); opacity:.58; border-radius: 999px;
       mix-blend-mode: screen;
-      animation: drift 10s ease-in-out infinite;
+      animation: drift 14s ease-in-out infinite;
       pointer-events:none;
     }
     .aurora.a1{
       left:-280px; top:-220px;
-      background: radial-gradient(circle at 30% 40%, rgba(255,107,214,.55), transparent 55%),
-                  radial-gradient(circle at 70% 30%, rgba(77,247,255,.40), transparent 55%);
+      background: radial-gradient(circle at 30% 40%, rgba(255,107,214,.52), transparent 55%),
+                  radial-gradient(circle at 70% 30%, rgba(77,247,255,.36), transparent 55%);
     }
     .aurora.a2{
       right:-320px; top:10%;
-      background: radial-gradient(circle at 20% 60%, rgba(138,107,255,.55), transparent 55%),
-                  radial-gradient(circle at 70% 30%, rgba(255,211,122,.30), transparent 60%);
-      animation-duration: 13s;
+      background: radial-gradient(circle at 20% 60%, rgba(138,107,255,.52), transparent 55%),
+                  radial-gradient(circle at 70% 30%, rgba(255,211,122,.26), transparent 60%);
+      animation-duration: 18s;
     }
     .aurora.a3{
       left:20%; bottom:-280px;
-      background: radial-gradient(circle at 40% 40%, rgba(77,247,255,.35), transparent 60%),
-                  radial-gradient(circle at 70% 40%, rgba(255,107,214,.28), transparent 65%);
-      animation-duration: 16s;
+      background: radial-gradient(circle at 40% 40%, rgba(77,247,255,.30), transparent 60%),
+                  radial-gradient(circle at 70% 40%, rgba(255,107,214,.25), transparent 65%);
+      animation-duration: 22s;
     }
     @keyframes drift{
       0%,100%{ transform: translate3d(0,0,0) rotate(6deg); }
-      50%{ transform: translate3d(3%,-2%,0) rotate(10deg); }
+      50%{ transform: translate3d(2%,-2%,0) rotate(10deg); }
     }
     .grain{
       position:absolute; inset:-30%;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
-      opacity:.06; transform: rotate(8deg); pointer-events:none;
+      opacity:.05; transform: rotate(8deg); pointer-events:none;
     }
 
     /* Layout */
@@ -94,7 +95,7 @@
       border:1px solid rgba(255,255,255,.14);
       background: rgba(0,0,0,.18);
       border-radius:999px;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
     }
     .logo{
       width:28px;height:28px; display:grid; place-items:center;
@@ -103,13 +104,14 @@
       border:1px solid rgba(255,255,255,.16);
     }
     .brandText{ letter-spacing:.6px; font-weight:700; opacity:.92; }
+    .chipRow{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
     .chip{
       font-size:12px; color: rgba(255,255,255,.80);
       padding:10px 12px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,.14);
       background: rgba(0,0,0,.18);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
     }
 
     .hero{
@@ -129,19 +131,19 @@
       background: linear-gradient(135deg, rgba(255,255,255,.11), rgba(255,255,255,.06));
       border: 1px solid rgba(255,255,255,.14);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(12px);
       overflow:hidden;
-      min-height: 520px;
+      min-height: 540px;
     }
     .glowBorder{
       position:absolute; inset:-2px;
       border-radius: calc(var(--radius) + 2px);
-      background: radial-gradient(900px 220px at 20% 0%, rgba(255,107,214,.26), transparent 60%),
-                  radial-gradient(700px 220px at 70% 0%, rgba(77,247,255,.22), transparent 60%),
-                  radial-gradient(900px 220px at 40% 100%, rgba(138,107,255,.18), transparent 60%);
+      background: radial-gradient(900px 220px at 20% 0%, rgba(255,107,214,.22), transparent 60%),
+                  radial-gradient(700px 220px at 70% 0%, rgba(77,247,255,.18), transparent 60%),
+                  radial-gradient(900px 220px at 40% 100%, rgba(138,107,255,.14), transparent 60%);
       pointer-events:none;
       filter: blur(10px);
-      opacity:.9;
+      opacity:.85;
     }
 
     .side{ display:grid; gap:14px; }
@@ -150,7 +152,7 @@
       padding:18px;
       border:1px solid rgba(255,255,255,.14);
       background: rgba(0,0,0,.18);
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(10px);
       box-shadow: 0 18px 70px rgba(0,0,0,.35);
     }
     .sideCard.soft{ opacity:.92; }
@@ -176,8 +178,8 @@
     /* Typography + UI */
     .headline h1{
       margin:0 0 8px;
-      font-size: clamp(34px, 4vw, 52px);
-      line-height:1.05;
+      font-size: clamp(30px, 3.8vw, 50px);
+      line-height:1.06;
       letter-spacing:.2px;
     }
     .accent{
@@ -187,9 +189,19 @@
       color:transparent;
     }
     .sub{ font-size: clamp(16px, 2vw, 20px); opacity:.7; margin-left:6px; }
-    .lead{ margin:0; color: var(--muted); line-height:1.75; font-size:16px; max-width:60ch; }
+    .lead{ margin:0; color: var(--muted); line-height:1.75; font-size:16px; max-width:66ch; }
 
     .controls{ margin-top:18px; display:grid; gap:16px; }
+
+    .row2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 720px){
+      .row2{ grid-template-columns: 1fr; }
+    }
+
     .field{ display:grid; gap:8px; }
     .field label{ font-size:13px; color: rgba(255,255,255,.80); }
     .field input{
@@ -276,33 +288,111 @@
       border-radius:999px;
       border:1px solid rgba(255,255,255,.14);
       background: rgba(0,0,0,.16);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
     }
 
     /* SPA pages */
     .page{ display:none; }
     .page.active{ display:block; }
+    .navline{ margin-top: 14px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; }
 
-    .navline{
+    /* Surprise envelope */
+    .envelopeWrap{
       margin-top: 14px;
-      display:flex;
-      justify-content:space-between;
-      gap: 10px;
-      flex-wrap:wrap;
+      display:grid;
+      place-items:center;
     }
-
-    /* Story typebox */
-    .typebox{
-      margin-top: 14px;
-      padding: 16px;
-      border-radius: 18px;
+    .envelope{
+      width:min(520px, 94%);
+      aspect-ratio: 16/10;
+      position:relative;
+      border-radius: 22px;
       border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.16);
+      background: rgba(0,0,0,.14);
+      overflow:hidden;
+      box-shadow: 0 24px 90px rgba(0,0,0,.35);
     }
-    .typed{ margin:0; white-space:pre-wrap; line-height:1.85; }
+    .envBack{
+      position:absolute; inset:0;
+      background:
+        radial-gradient(600px 260px at 30% 15%, rgba(255,107,214,.20), transparent 60%),
+        radial-gradient(520px 260px at 70% 85%, rgba(77,247,255,.14), transparent 60%),
+        linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+    }
+    .envFlap{
+      position:absolute;
+      left:0; right:0; top:-2px;
+      height:55%;
+      background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      border-bottom:1px solid rgba(255,255,255,.12);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: top center;
+      transition: transform .6s ease;
+    }
+    .envLetter{
+      position:absolute;
+      left:6%; right:6%;
+      bottom:6%;
+      height:72%;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      transform: translateY(34%);
+      transition: transform .6s ease;
+      padding: 14px;
+    }
+    .envelope.open .envFlap{ transform: rotateX(170deg); }
+    .envelope.open .envLetter{ transform: translateY(0%); }
+
+    .typed{
+      margin:0;
+      white-space:pre-wrap;
+      line-height:1.85;
+      color: rgba(255,255,255,.92);
+      font-size: 14px;
+    }
     .small{ margin-top:10px; color: rgba(255,255,255,.68); font-size:12px; }
 
-    /* Gallery */
+    /* Stats / timeline */
+    .stats{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (max-width: 860px){ .stats{ grid-template-columns: 1fr; } }
+    .stat{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.16);
+      padding: 14px;
+    }
+    .stat .k{ font-size:12px; color: rgba(255,255,255,.68); }
+    .stat .v{ font-size: 22px; font-weight: 700; margin-top: 2px; }
+    .timeline{
+      margin-top: 12px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.16);
+      padding: 14px;
+    }
+    .tlRow{
+      display:flex; gap:10px; align-items:flex-start;
+      padding: 10px 0;
+      border-bottom: 1px dashed rgba(255,255,255,.14);
+    }
+    .tlRow:last-child{ border-bottom:none; }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(90deg, var(--cyan), var(--pink));
+      box-shadow: 0 0 20px rgba(77,247,255,.25);
+      margin-top: 6px;
+      flex: 0 0 auto;
+    }
+    .tlText b{ color: rgba(255,255,255,.92); }
+    .tlText{ color: rgba(255,255,255,.78); line-height: 1.7; font-size: 14px; }
+
+    /* Unlock gifts */
     .grid{
       margin-top: 14px;
       display:grid;
@@ -311,7 +401,6 @@
     }
     @media (max-width: 860px){ .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 520px){ .grid{ grid-template-columns: 1fr; } }
-
     .memCard{
       padding: 14px;
       border-radius: 18px;
@@ -330,9 +419,7 @@
     /* Finale */
     .center{ text-align:center; }
     .bigHeart{
-      font-size: 64px;
-      line-height: 1;
-      margin-top: 10px;
+      font-size: 64px; line-height: 1; margin-top: 10px;
       text-shadow: 0 12px 50px rgba(255,107,214,.25);
       animation: pulse 1.8s ease-in-out infinite;
     }
@@ -353,6 +440,12 @@
       color: rgba(255,255,255,.82);
       overflow-wrap:anywhere;
     }
+
+    @media (prefers-reduced-motion: reduce){
+      .aurora{ animation:none; }
+      .btnShine{ animation:none; }
+      .bigHeart{ animation:none; }
+    }
   </style>
 </head>
 
@@ -369,9 +462,12 @@
     <header class="top">
       <div class="brand">
         <span class="logo">✦</span>
-        <span class="brandText">OPAL.exe</span>
+        <span class="brandText">ANNIVERSARY_SURPRISE</span>
       </div>
-      <div class="chip" id="chipTime"></div>
+      <div class="chipRow">
+        <div class="chip" id="chipTime"></div>
+        <button class="chip" id="perfBtn" title="ลดเอฟเฟกต์เพื่อความลื่น">Performance: ON</button>
+      </div>
     </header>
 
     <section class="hero">
@@ -383,106 +479,175 @@
         <div class="page active" data-page="home">
           <div class="headline">
             <h1>
+              เซอร์ไพรส์วันครบรอบ<br>
               ถึง <span class="accent" id="toNameBig">โอปอ</span>
               <span class="sub">(opal)</span>
             </h1>
             <p class="lead">
-              เปิดทีละหน้า แล้วให้เราเล่า “ความรู้สึกจริงๆ” แบบค่อยๆ ละลายใจนะ 💗
+              ใส่ “วันเริ่มคบ/วันครบรอบ” แล้วไปเปิดซองจดหมาย… มีอะไรซ่อนอยู่ข้างใน 💌
             </p>
           </div>
 
           <div class="controls">
-            <div class="field">
-              <label>ชื่อแฟน</label>
-              <input id="nameInput" maxlength="30" placeholder="โอปอ / opal" />
+            <div class="row2">
+              <div class="field">
+                <label>ชื่อแฟน</label>
+                <input id="nameInput" maxlength="30" placeholder="โอปอ / opal" />
+              </div>
+              <div class="field">
+                <label>วันเริ่มคบ / วันครบรอบ (เลือกวัน)</label>
+                <input id="dateInput" type="date" />
+              </div>
             </div>
 
             <div class="buttons">
               <button class="btn primary" id="startBtn">
-                <span class="btnIcon">❤</span>
-                <span>เริ่มภารกิจ</span>
+                <span class="btnIcon">💌</span>
+                <span>เปิดซองเซอร์ไพรส์</span>
                 <span class="btnShine" aria-hidden="true"></span>
               </button>
 
-              <button class="btn ghost" id="skipBtn">ดูหน้าอื่น ๆ →</button>
+              <button class="btn ghost" id="skipBtn">ข้ามไปดู Timeline →</button>
             </div>
 
             <div class="meta">
               <div class="metaRow">
                 <span id="progressText">Progress: 0%</span>
-                <span class="hint">*เว็บนี้จำชื่อด้วยเครื่องของคุณ</span>
+                <span class="hint">*จำชื่อ/วันที่ในเครื่องของคุณ</span>
               </div>
               <div class="bar"><div id="barFill" class="barFill"></div></div>
             </div>
           </div>
 
           <div class="mini">
-            <div class="pill">Glass UI</div>
-            <div class="pill">Aurora</div>
-            <div class="pill">Stars</div>
+            <div class="pill">Surprise</div>
+            <div class="pill">Anniversary</div>
             <div class="pill">One-file</div>
+            <div class="pill">Optimized</div>
           </div>
         </div>
 
-        <!-- PAGE 1: STORY -->
-        <div class="page" data-page="story">
+        <!-- PAGE 1: SURPRISE LETTER -->
+        <div class="page" data-page="letter">
           <div class="headline">
-            <h1>หน้าที่ 1: <span class="accent">เรื่องของเรา</span></h1>
-            <p class="lead">อ่านช้าๆ นะ <span id="toNameInline1" class="accent">โอปอ</span> 🙂</p>
+            <h1>หน้าที่ 1: <span class="accent">ซองจดหมาย</span></h1>
+            <p class="lead">แตะซองเพื่อ “เปิด” แล้วอ่านช้าๆ นะ <span id="toNameInline1" class="accent">โอปอ</span> 🙂</p>
           </div>
 
-          <div class="typebox">
-            <p id="typed" class="typed"></p>
-            <div class="small">กด “ต่อไป” เมื่ออ่านจบ 🫶</div>
+          <div class="envelopeWrap">
+            <div class="envelope" id="envelope">
+              <div class="envBack"></div>
+              <div class="envFlap"></div>
+              <div class="envLetter">
+                <p id="typed" class="typed"></p>
+                <div class="small" id="typedHint">กดเปิดซองก่อนนะ 💌</div>
+              </div>
+            </div>
           </div>
 
           <div class="navline">
             <button class="btn ghost" data-nav="home">← ย้อนกลับ</button>
-            <button class="btn primary" id="toGalleryBtn" disabled>
-              <span class="btnIcon">✦</span>
-              <span>ต่อไป</span>
+            <button class="btn primary" id="toTimelineBtn" disabled>
+              <span class="btnIcon">⏳</span>
+              <span>ไปดู Timeline</span>
               <span class="btnShine" aria-hidden="true"></span>
             </button>
           </div>
         </div>
 
-        <!-- PAGE 2: GALLERY -->
-        <div class="page" data-page="gallery">
+        <!-- PAGE 2: TIMELINE -->
+        <div class="page" data-page="timeline">
           <div class="headline">
-            <h1>หน้าที่ 2: <span class="accent">Memories</span></h1>
-            <p class="lead">กดการ์ดให้ครบ 3 ใบเพื่อปลดล็อก “คำสุดท้าย”</p>
+            <h1>หน้าที่ 2: <span class="accent">Anniversary Timeline</span></h1>
+            <p class="lead">สรุปแบบสั้นๆ แต่โคตรจริงใจ 💞</p>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="k">คบกันมาแล้ว</div>
+              <div class="v" id="daysTogether">—</div>
+              <div class="k">วัน</div>
+            </div>
+            <div class="stat">
+              <div class="k">ครบรอบถัดไปในอีก</div>
+              <div class="v" id="daysToNext">—</div>
+              <div class="k">วัน</div>
+            </div>
+            <div class="stat">
+              <div class="k">วันสำคัญของเรา</div>
+              <div class="v" id="datePretty">—</div>
+              <div class="k">จำได้เสมอ</div>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <div class="tlRow">
+              <span class="dot"></span>
+              <div class="tlText">
+                <b>วันนั้น</b> เราเริ่มมี “เรา” และ “เธอ” เป็น “เรา” มากขึ้น
+              </div>
+            </div>
+            <div class="tlRow">
+              <span class="dot"></span>
+              <div class="tlText">
+                <b>วันนี้</b> เราอยากบอกว่า… เรารักเธอมากขึ้นกว่าเดิมทุกวัน
+              </div>
+            </div>
+            <div class="tlRow">
+              <span class="dot"></span>
+              <div class="tlText">
+                <b>ต่อจากนี้</b> ขอให้เรายังจับมือกันไปเรื่อยๆ ไม่รีบ แต่ไม่ปล่อย
+              </div>
+            </div>
+          </div>
+
+          <div class="navline">
+            <button class="btn ghost" data-nav="letter">← กลับไปอ่านจดหมาย</button>
+            <button class="btn primary" id="toGiftsBtn">
+              <span class="btnIcon">🎁</span>
+              <span>ไปปลดล็อกของขวัญ</span>
+              <span class="btnShine" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- PAGE 3: GIFTS (unlock) -->
+        <div class="page" data-page="gifts">
+          <div class="headline">
+            <h1>หน้าที่ 3: <span class="accent">ของขวัญที่ซ่อนอยู่</span></h1>
+            <p class="lead">กดการ์ดให้ครบ 3 ใบเพื่อปลดล็อก “Happy Anniversary”</p>
           </div>
 
           <div class="grid" id="grid"></div>
 
           <div class="navline">
-            <button class="btn ghost" data-nav="story">← ย้อนกลับ</button>
+            <button class="btn ghost" data-nav="timeline">← ย้อนกลับ</button>
             <button class="btn primary" id="unlockBtn" disabled>
               <span class="btnIcon">🔓</span>
-              <span>ปลดล็อก</span>
+              <span>ปลดล็อกหน้าสุดท้าย</span>
               <span class="btnShine" aria-hidden="true"></span>
             </button>
           </div>
         </div>
 
-        <!-- PAGE 3: FINALE -->
+        <!-- PAGE 4: FINALE -->
         <div class="page" data-page="finale">
           <div class="headline center">
             <div class="bigHeart" aria-hidden="true">❤</div>
-            <h1>เรารัก <span class="accent" id="toNameInline3">โอปอ</span></h1>
+            <h1>Happy Anniversary<br><span class="accent" id="toNameInline5">โอปอ</span></h1>
             <p class="lead" id="randomLine"></p>
           </div>
 
           <div class="panel">
             <div class="mono" id="hashLine"></div>
-            <div class="small">*ลายเซ็นเฉพาะ “เรา & เธอ” ทุกครั้งที่เปิด</div>
+            <div class="small">*ลายเซ็นวันนี้ของ “เรา & เธอ”</div>
           </div>
 
           <div class="navline">
             <button class="btn ghost" id="regenBtn">สุ่มประโยค 🎲</button>
-            <button class="btn primary" id="yesBtn">
+            <button class="btn primary" id="kissBtn">
               <span class="btnIcon">💖</span>
-              <span>ตกลงเป็นแฟน…ต่อไปไหม</span>
+              <span>กดรับเซอร์ไพรส์</span>
               <span class="btnShine" aria-hidden="true"></span>
             </button>
           </div>
@@ -500,16 +665,16 @@
           <h3>สถานะ</h3>
           <ul>
             <li>To: <span class="accent" id="toNameSide">โอปอ</span> (opal)</li>
-            <li>ระบบจำชื่อ + ความคืบหน้า</li>
-            <li>เปิดหลายหน้าในไฟล์เดียว</li>
+            <li>ธีม: Surprise + Anniversary</li>
+            <li>ปลดล็อกหน้าสุดท้ายด้วยการ์ด 3 ใบ</li>
           </ul>
-          <div class="ctaLine">พร้อมยัง <span class="accent" id="toNameSide2">โอปอ</span> 🙂</div>
+          <div class="ctaLine">สุขสันต์วันครบรอบนะ <span class="accent" id="toNameSide2">โอปอ</span> 🙂</div>
         </div>
 
         <div class="sideCard soft">
           <h3>Tip</h3>
           <p style="margin:0;color:rgba(255,255,255,.76);line-height:1.7">
-            ถ้าอยาก “เนียนขึ้น” ให้เปลี่ยนชื่อ repo เป็น <b>opal</b> แล้วเปิด GitHub Pages
+            ถ้าอยากให้ “ตรงวันจริง” เป๊ะๆ ให้ใส่วันที่ในหน้าแรก แล้วเว็บจะคำนวณให้เอง
           </p>
         </div>
       </aside>
@@ -517,19 +682,24 @@
 
     <footer class="foot">
       <span class="footDot"></span>
-      <span>Made with love for Opal</span>
+      <span>Made with love • Anniversary Surprise</span>
     </footer>
   </main>
 
   <script>
     // ===== State =====
-    const KEY = "love_spa_v1";
+    const KEY = "anniv_surprise_v1";
     const state = {
       name: "โอปอ",
-      step: 0,          // 0 home, 1 story, 2 gallery, 3 finale
-      revealed: {},     // gallery
-      lastLineIdx: 0
+      dateISO: "",      // YYYY-MM-DD
+      step: 0,          // 0 home, 1 letter, 2 timeline, 3 gifts, 4 finale
+      revealed: {},
+      perf: true
     };
+
+    // ===== Utilities =====
+    const $ = (q, el=document) => el.querySelector(q);
+    const $$ = (q, el=document) => Array.from(el.querySelectorAll(q));
 
     function load(){
       try{
@@ -541,10 +711,6 @@
       localStorage.setItem(KEY, JSON.stringify(state));
     }
 
-    // ===== Utilities =====
-    const $ = (q, el=document) => el.querySelector(q);
-    const $$ = (q, el=document) => Array.from(el.querySelectorAll(q));
-
     function setProgress(step){
       state.step = Math.max(state.step, step);
       save();
@@ -552,7 +718,7 @@
     }
 
     function progressPercent(){
-      const pct = Math.round((Math.min(state.step, 3) / 3) * 100);
+      const pct = Math.round((Math.min(state.step, 4) / 4) * 100);
       return isFinite(pct) ? pct : 0;
     }
 
@@ -560,11 +726,15 @@
       const show = state.name?.trim() || "โอปอ";
       $("#toNameBig").textContent = show;
       $("#toNameInline1").textContent = show;
-      $("#toNameInline3").textContent = show;
+      $("#toNameInline5").textContent = show;
       $("#toNameSide").textContent = show;
       $("#toNameSide2").textContent = show;
+
       const nameInput = $("#nameInput");
       if(nameInput && !nameInput.value) nameInput.value = show;
+
+      const dateInput = $("#dateInput");
+      if(dateInput && state.dateISO && !dateInput.value) dateInput.value = state.dateISO;
     }
 
     function syncProgressUI(){
@@ -575,34 +745,24 @@
       if(b) b.style.width = `${pct}%`;
     }
 
-    // ===== Router (hash SPA) =====
+    // ===== Router =====
     function showPage(name){
       $$(".page").forEach(p => p.classList.toggle("active", p.dataset.page === name));
       location.hash = name;
 
-      // page-specific hooks
-      if(name === "home"){
-        setProgress(0);
-      }
-      if(name === "story"){
-        setProgress(1);
-        startStoryTypewriter();
-      }
-      if(name === "gallery"){
-        setProgress(2);
-        renderGallery();
-      }
-      if(name === "finale"){
-        setProgress(3);
-        refreshFinale();
-      }
+      if(name === "home") setProgress(0);
+      if(name === "letter") { setProgress(1); resetLetterUI(); }
+      if(name === "timeline") { setProgress(2); renderTimeline(); }
+      if(name === "gifts") { setProgress(3); renderGifts(); }
+      if(name === "finale") { setProgress(4); refreshFinale(); }
+
       syncNames();
       syncProgressUI();
     }
 
     window.addEventListener("hashchange", () => {
       const page = (location.hash || "#home").slice(1);
-      if(["home","story","gallery","finale"].includes(page)) showPage(page);
+      if(["home","letter","timeline","gifts","finale"].includes(page)) showPage(page);
     });
 
     // ===== Time chip =====
@@ -618,35 +778,48 @@
       setInterval(tick, 10000);
     }
 
-    // ===== Stars canvas =====
+    // ===== Stars (optimized: 30fps, less stars, pause when hidden) =====
     function initStars(){
       const c = $("#stars");
       if(!c) return;
-      const ctx = c.getContext("2d");
-      let w,h,stars;
+      const ctx = c.getContext("2d", { alpha: true });
+
+      let w,h,stars,last=0,acc=0;
+      let running = true;
 
       const resize = () => {
-        w = c.width = Math.floor(innerWidth * devicePixelRatio);
-        h = c.height = Math.floor(innerHeight * devicePixelRatio);
+        const dpr = Math.min(devicePixelRatio || 1, state.perf ? 1.5 : 1.2);
+        w = c.width  = Math.floor(innerWidth  * dpr);
+        h = c.height = Math.floor(innerHeight * dpr);
         c.style.width = "100%";
         c.style.height = "100%";
 
-        const count = Math.min(280, Math.floor((innerWidth * innerHeight) / 6500));
+        const base = state.perf ? 140 : 100;
+        const count = Math.min(base, Math.floor((innerWidth * innerHeight) / (state.perf ? 12000 : 15000)));
         stars = Array.from({length: count}, () => ({
           x: Math.random()*w,
           y: Math.random()*h,
-          r: (Math.random()*1.4 + .3)*devicePixelRatio,
-          a: Math.random()*.7 + .12,
-          s: (Math.random()*.45 + .08)*devicePixelRatio,
-          tw: Math.random()*.04 + .01
+          r: (Math.random()*1.2 + .25)*dpr,
+          a: Math.random()*.55 + .12,
+          s: (Math.random()*.32 + .06)*dpr,
+          tw: Math.random()*.035 + .01
         }));
       };
 
-      const draw = (t) => {
+      const drawFrame = (t) => {
+        if(!running) return;
+
+        if(!last) last = t;
+        const dt = t - last;
+        last = t;
+        acc += dt;
+        if(acc < 33) { requestAnimationFrame(drawFrame); return; } // ~30fps
+        acc = 0;
+
         ctx.clearRect(0,0,w,h);
-        const g = ctx.createRadialGradient(w*0.5, h*0.4, 0, w*0.5, h*0.4, Math.max(w,h)*0.7);
-        g.addColorStop(0, "rgba(255,255,255,0.02)");
-        g.addColorStop(1, "rgba(0,0,0,0.22)");
+        const g = ctx.createRadialGradient(w*0.5, h*0.4, 0, w*0.5, h*0.4, Math.max(w,h)*0.65);
+        g.addColorStop(0, "rgba(255,255,255,0.015)");
+        g.addColorStop(1, "rgba(0,0,0,0.20)");
         ctx.fillStyle = g;
         ctx.fillRect(0,0,w,h);
 
@@ -654,30 +827,51 @@
           st.y += st.s;
           if(st.y > h+20){ st.y=-20; st.x=Math.random()*w; }
           const tw = 0.5 + 0.5*Math.sin(t*st.tw);
-          const alpha = st.a*(0.55 + tw*0.45);
+          const alpha = st.a*(0.6 + tw*0.4);
           ctx.beginPath();
           ctx.arc(st.x, st.y, st.r, 0, Math.PI*2);
           ctx.fillStyle = `rgba(255,255,255,${alpha})`;
           ctx.fill();
         }
-        requestAnimationFrame(draw);
+
+        requestAnimationFrame(drawFrame);
       };
+
+      document.addEventListener("visibilitychange", () => {
+        running = !document.hidden;
+        if(running) requestAnimationFrame(drawFrame);
+      });
 
       addEventListener("resize", resize, {passive:true});
       resize();
-      requestAnimationFrame(draw);
+      requestAnimationFrame(drawFrame);
+
+      return { resize };
     }
 
-    // ===== Story typewriter =====
-    const storyText = () => [
-      `${state.name || "โอปอ"}… ขอบคุณที่เข้ามาในชีวิตเรา`,
-      "บางคนเข้ามาแบบธรรมดา… แต่ทำให้ทุกอย่างไม่ธรรมดาอีกต่อไป",
-      "ตั้งแต่มีเธอ โลกมันใจดีกับเราขึ้นแบบแปลกๆ",
-      `เราอาจไม่เก่งเรื่องหวาน แต่เราเก่งเรื่อง “รัก${state.name || "เธอ"}” นะ`,
-      "ถ้าวันไหนเหนื่อย กอดเราได้เลยนะ… เราอยู่ข้างเธอเสมอ"
-    ].join("\n\n");
+    // ===== Performance toggle =====
+    function applyPerf(){
+      // hide aurora when perf off (max smooth)
+      $$(".aurora").forEach(a => a.style.display = state.perf ? "block" : "none");
+      $("#perfBtn").textContent = `Performance: ${state.perf ? "ON" : "MAX"}`;
+      save();
+    }
 
+    // ===== Letter (surprise) =====
     let typingRunning = false;
+
+    function letterText(){
+      const n = state.name || "โอปอ";
+      const date = state.dateISO ? prettyDate(state.dateISO) : "วันสำคัญของเรา";
+      return [
+        `${n}… สุขสันต์วันครบรอบนะ 💗`,
+        `วันนี้เราแอบทำเว็บนี้ไว้ให้เธอ เพราะอยากให้ ${date} เป็นวันที่พิเศษขึ้นอีกนิด`,
+        "ขอบคุณที่อยู่ด้วยกัน ไม่ว่าจะวันดีหรือวันที่เหนื่อย",
+        `เราอาจไม่เก่งเรื่องหวาน แต่เราเก่งเรื่อง “รัก${n}” จริงๆ`,
+        "ขอให้หลังจากนี้ เราได้ยิ้มด้วยกันไปอีกนานๆ นะ"
+      ].join("\n\n");
+    }
+
     async function typewriter(el, text, speed=16){
       el.textContent = "";
       for(let i=0;i<text.length;i++){
@@ -687,51 +881,120 @@
       }
     }
 
-    async function startStoryTypewriter(){
+    function resetLetterUI(){
+      typingRunning = false;
+      $("#envelope").classList.remove("open");
+      $("#typed").textContent = "";
+      $("#typedHint").textContent = "กดที่ซองเพื่อเปิด 💌";
+      $("#toTimelineBtn").disabled = true;
+    }
+
+    async function openEnvelopeAndType(){
       if(typingRunning) return;
       typingRunning = true;
-      const typed = $("#typed");
-      const nextBtn = $("#toGalleryBtn");
-      if(nextBtn) nextBtn.disabled = true;
 
-      await typewriter(typed, storyText(), 16);
+      $("#envelope").classList.add("open");
+      $("#typedHint").textContent = "กำลังเปิดจดหมาย…";
 
-      if(nextBtn) nextBtn.disabled = false;
+      await new Promise(r=>setTimeout(r, 420));
+      await typewriter($("#typed"), letterText(), 16);
+
+      $("#typedHint").textContent = "อ่านจบแล้ว กดไปดู Timeline ได้เลย 🫶";
+      $("#toTimelineBtn").disabled = false;
       typingRunning = false;
     }
 
-    // ===== Gallery =====
-    const cards = [
-      { title:"วันที่เราหัวเราะ", body:"เสียงหัวเราะของเธอ ทำให้วันที่หนักๆ เบาลงได้จริงๆ" },
-      { title:"วันที่เราผ่านอะไรด้วยกัน", body:"เราไม่สัญญาว่าทุกวันจะดี แต่สัญญาว่าจะไปด้วยกัน" },
-      { title:"วันที่เราเงียบ", body:"ถึงไม่พูดเยอะ แต่ใจเราพูดว่า ‘รัก’ ตลอด" },
-      { title:"วันที่เธอเหนื่อย", body:"พักได้เลยนะ เราจะเป็นที่ปลอดภัยให้เธอ" },
-      { title:"วันที่เธอเก่งมาก", body:"เราภูมิใจในตัวเธอมากกว่าที่เธอคิดอีก" },
-      { title:"วันที่ธรรมดา", body:"ความธรรมดาที่มีเธออยู่ด้วย มันดีที่สุดแล้ว" }
+    // ===== Timeline 계산 =====
+    function toLocalNoon(d){
+      // ป้องกัน timezone เพี้ยน: สร้างเวลาเที่ยงวัน
+      return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 12, 0, 0, 0);
+    }
+
+    function parseISODate(iso){
+      // iso: YYYY-MM-DD
+      const [y,m,dd] = iso.split("-").map(Number);
+      if(!y || !m || !dd) return null;
+      return new Date(y, m-1, dd);
+    }
+
+    function daysBetween(a, b){
+      const A = toLocalNoon(a).getTime();
+      const B = toLocalNoon(b).getTime();
+      return Math.floor((B - A) / 86400000);
+    }
+
+    function prettyDate(iso){
+      const d = parseISODate(iso);
+      if(!d) return "—";
+      return d.toLocaleDateString("th-TH", { year:"numeric", month:"long", day:"numeric" });
+    }
+
+    function nextAnniversary(start){
+      const now = new Date();
+      const s = toLocalNoon(start);
+      const yearNow = now.getFullYear();
+
+      // ครบรอบแบบ "ทุกปีวันเดิม"
+      let next = new Date(yearNow, s.getMonth(), s.getDate());
+      next = toLocalNoon(next);
+      if(daysBetween(now, next) < 0) {
+        next = new Date(yearNow + 1, s.getMonth(), s.getDate());
+        next = toLocalNoon(next);
+      }
+      return next;
+    }
+
+    function renderTimeline(){
+      const d = state.dateISO ? parseISODate(state.dateISO) : null;
+      const now = new Date();
+
+      if(!d){
+        $("#daysTogether").textContent = "—";
+        $("#daysToNext").textContent = "—";
+        $("#datePretty").textContent = "ยังไม่ได้ใส่วัน";
+        return;
+      }
+
+      const together = Math.max(0, daysBetween(d, now));
+      const next = nextAnniversary(d);
+      const toNext = Math.max(0, daysBetween(now, next));
+
+      $("#daysTogether").textContent = String(together);
+      $("#daysToNext").textContent = String(toNext);
+      $("#datePretty").textContent = prettyDate(state.dateISO);
+    }
+
+    // ===== Gifts unlock =====
+    const gifts = [
+      { title:"ของขวัญชิ้นที่ 1", body:"สิ่งที่อยากให้เธอได้ทุกวัน คือ ‘ความสบายใจ’" },
+      { title:"ของขวัญชิ้นที่ 2", body:"เราจะเป็นทีมเดียวกับเธอเสมอ ไม่ว่าอะไรจะเกิดขึ้น" },
+      { title:"ของขวัญชิ้นที่ 3", body:"รักของเราไม่ได้ดัง… แต่มัน ‘จริง’ มาก" },
+      { title:"ของขวัญชิ้นที่ 4", body:"วันนี้ขอให้เธอยิ้มเยอะๆ เพราะเธอสวยตอนยิ้มมาก" },
+      { title:"ของขวัญชิ้นที่ 5", body:"ขอบคุณที่ทำให้คำว่า ‘บ้าน’ อบอุ่นขึ้น" },
+      { title:"ของขวัญชิ้นที่ 6", body:"เราอยากไปครบรอบปีถัดๆ ไปกับเธอ" }
     ];
 
     function revealedCount(){
       return Object.values(state.revealed || {}).filter(Boolean).length;
     }
 
-    function renderGallery(){
+    function renderGifts(){
       const grid = $("#grid");
       const unlockBtn = $("#unlockBtn");
       const need = 3;
 
       grid.innerHTML = "";
-      cards.forEach((c, idx) => {
+      gifts.forEach((c, idx) => {
         const revealed = !!state.revealed[idx];
         const el = document.createElement("div");
         el.className = `memCard ${revealed ? "revealed" : "locked"}`;
-
         el.innerHTML = `<h4>${c.title}</h4><p>${c.body}</p>`;
+
         el.addEventListener("click", () => {
           state.revealed[idx] = true;
           save();
           el.classList.remove("locked");
           el.classList.add("revealed");
-
           if(revealedCount() >= need) unlockBtn.disabled = false;
         });
 
@@ -741,14 +1004,14 @@
       unlockBtn.disabled = !(revealedCount() >= need);
     }
 
-    // ===== Finale random + signature =====
+    // ===== Finale =====
     const finaleLines = [
-      "ขอบคุณที่อยู่ด้วยกันนะ",
-      "เธอคือความสบายใจของเรา",
-      "เราจะรักเธอให้เหมือนวันแรก…แต่เก่งกว่าเดิม",
-      "ถ้าวันไหนไม่ไหว กอดเราได้เลย",
-      "ขอให้เรายิ้มด้วยกันไปนานๆ",
-      "รักแบบที่ไม่ต้องพิสูจน์อะไรอีกแล้ว"
+      "ขอบคุณที่เป็น ‘เรื่องดีๆ’ ของเราเสมอ",
+      "สุขสันต์วันครบรอบนะ… อยากจับมือไปเรื่อยๆ",
+      "เรารักเธอมากขึ้นกว่าเมื่อวาน และน้อยกว่าพรุ่งนี้นิดนึง",
+      "ขอให้เรามีความสุขแบบเรียบง่าย แต่ยาวนาน",
+      "วันนี้ขออนุญาตบอกรักดังๆ ได้ไหม 🙂",
+      "เธอคือคนโปรดของเรา…ตลอดไป"
     ];
 
     function xmur3(str){
@@ -772,7 +1035,7 @@
       };
     }
     function getSignature(){
-      const base = `${state.name||"opal"}|${new Date().toISOString().slice(0,10)}|v1`;
+      const base = `${state.name||"opal"}|${state.dateISO||"no-date"}|${new Date().toISOString().slice(0,10)}|v1`;
       const seed = xmur3(base)();
       const rand = mulberry32(seed);
       const hex = () => Math.floor(rand()*0xffffffff).toString(16).padStart(8,"0");
@@ -780,11 +1043,8 @@
     }
 
     function refreshFinale(){
-      const rnd = mulberry32(xmur3(`${Date.now()}|${state.name}`)());
+      const rnd = mulberry32(xmur3(`${Date.now()}|${state.name}|${state.dateISO}`)());
       const idx = Math.floor(rnd() * finaleLines.length);
-      state.lastLineIdx = idx;
-      save();
-
       $("#randomLine").textContent = finaleLines[idx];
       $("#hashLine").textContent = `// ${getSignature()}`;
     }
@@ -830,56 +1090,61 @@
     document.addEventListener("DOMContentLoaded", () => {
       load();
       initTimeChip();
-      initStars();
+      const stars = initStars();
+
+      // apply perf mode
+      applyPerf();
+
+      // restore inputs
       syncNames();
       syncProgressUI();
 
       // restore route
       const page = (location.hash || "#home").slice(1);
-      if(["home","story","gallery","finale"].includes(page)) showPage(page);
+      if(["home","letter","timeline","gifts","finale"].includes(page)) showPage(page);
       else showPage("home");
 
-      // nav buttons (data-nav)
-      $$("[data-nav]").forEach(btn => {
-        btn.addEventListener("click", () => showPage(btn.dataset.nav));
+      // nav buttons
+      $$("[data-nav]").forEach(btn => btn.addEventListener("click", () => showPage(btn.dataset.nav)));
+
+      // perf button
+      $("#perfBtn").addEventListener("click", () => {
+        state.perf = !state.perf;      // ON = สวยปกติ, MAX = ปิด aurora
+        applyPerf();
+        stars?.resize?.();
       });
 
-      // main actions
+      // start
       $("#startBtn").addEventListener("click", () => {
-        const name = ($("#nameInput").value || "").trim();
-        state.name = name || "โอปอ";
+        state.name = ($("#nameInput").value || "").trim() || "โอปอ";
+        state.dateISO = ($("#dateInput").value || "").trim();
         save();
         syncNames();
-        showPage("story");
+        showPage("letter");
       });
 
-      $("#skipBtn").addEventListener("click", () => showPage("story"));
+      $("#skipBtn").addEventListener("click", () => {
+        state.name = ($("#nameInput").value || "").trim() || state.name || "โอปอ";
+        state.dateISO = ($("#dateInput").value || "").trim() || state.dateISO || "";
+        save();
+        syncNames();
+        showPage("timeline");
+      });
 
-      $("#toGalleryBtn").addEventListener("click", () => showPage("gallery"));
+      // envelope click
+      $("#envelope").addEventListener("click", openEnvelopeAndType);
 
+      // next buttons
+      $("#toTimelineBtn").addEventListener("click", () => showPage("timeline"));
+      $("#toGiftsBtn").addEventListener("click", () => showPage("gifts"));
       $("#unlockBtn").addEventListener("click", () => showPage("finale"));
 
+      // finale actions
       $("#regenBtn").addEventListener("click", refreshFinale);
-
-      $("#yesBtn").addEventListener("click", () => {
+      $("#kissBtn").addEventListener("click", () => {
         confettiBurst();
-        alert(`เย่! รัก${state.name || "โอปอ"}นะ 💖`);
-      });
-
-      // subtle parallax on card
-      const card = $(".card");
-      let raf = 0;
-      window.addEventListener("mousemove", (e) => {
-        if(!card) return;
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => {
-          const x = (e.clientX / innerWidth - 0.5) * 6;
-          const y = (e.clientY / innerHeight - 0.5) * 6;
-          card.style.transform = `translate3d(0,0,0) rotateX(${-y}deg) rotateY(${x}deg)`;
-        });
-      }, { passive:true });
-      window.addEventListener("mouseleave", () => {
-        if(card) card.style.transform = "translate3d(0,0,0)";
+        const n = state.name || "โอปอ";
+        alert(`สุขสันต์วันครบรอบนะ ${n} 💞\nขอบคุณที่อยู่ด้วยกัน`);
       });
     });
   </script>
