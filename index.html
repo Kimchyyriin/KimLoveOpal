@@ -1,40 +1,887 @@
 <!doctype html>
 <html lang="th">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>For You ✨</title>
-    <link rel="stylesheet" href="css/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Opal ✨</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg0:#070A16;
+      --bg1:#0A1026;
+      --txt:#ECF2FF;
+      --muted:rgba(236,242,255,.72);
+      --stroke:rgba(255,255,255,.14);
+
+      --pink:#ff6bd6;
+      --cyan:#4df7ff;
+      --vio:#8a6bff;
+      --gold:#ffd37a;
+
+      --shadow: 0 30px 120px rgba(0,0,0,.55);
+      --radius: 26px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Kanit", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--txt);
+      background: radial-gradient(1000px 700px at 20% 10%, rgba(138,107,255,.18), transparent 60%),
+                  radial-gradient(900px 700px at 80% 40%, rgba(77,247,255,.12), transparent 55%),
+                  linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+
+    /* Scene */
+    .scene{ position:fixed; inset:0; z-index:-2; overflow:hidden; }
+    #stars{ position:absolute; inset:0; width:100%; height:100%; }
+    .aurora{
+      position:absolute; width:1100px; height:600px;
+      filter: blur(45px); opacity:.6; border-radius: 999px;
+      mix-blend-mode: screen;
+      animation: drift 10s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .aurora.a1{
+      left:-280px; top:-220px;
+      background: radial-gradient(circle at 30% 40%, rgba(255,107,214,.55), transparent 55%),
+                  radial-gradient(circle at 70% 30%, rgba(77,247,255,.40), transparent 55%);
+    }
+    .aurora.a2{
+      right:-320px; top:10%;
+      background: radial-gradient(circle at 20% 60%, rgba(138,107,255,.55), transparent 55%),
+                  radial-gradient(circle at 70% 30%, rgba(255,211,122,.30), transparent 60%);
+      animation-duration: 13s;
+    }
+    .aurora.a3{
+      left:20%; bottom:-280px;
+      background: radial-gradient(circle at 40% 40%, rgba(77,247,255,.35), transparent 60%),
+                  radial-gradient(circle at 70% 40%, rgba(255,107,214,.28), transparent 65%);
+      animation-duration: 16s;
+    }
+    @keyframes drift{
+      0%,100%{ transform: translate3d(0,0,0) rotate(6deg); }
+      50%{ transform: translate3d(3%,-2%,0) rotate(10deg); }
+    }
+    .grain{
+      position:absolute; inset:-30%;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+      opacity:.06; transform: rotate(8deg); pointer-events:none;
+    }
+
+    /* Layout */
+    .wrap{
+      min-height:100%;
+      padding: 26px 16px 18px;
+      width: min(1180px, 96vw);
+      margin: 0 auto;
+      display:flex;
+      flex-direction:column;
+      gap: 18px;
+    }
+    .top{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      border-radius:999px;
+      backdrop-filter: blur(12px);
+    }
+    .logo{
+      width:28px;height:28px; display:grid; place-items:center;
+      border-radius:10px;
+      background: linear-gradient(135deg, rgba(255,107,214,.35), rgba(77,247,255,.22));
+      border:1px solid rgba(255,255,255,.16);
+    }
+    .brandText{ letter-spacing:.6px; font-weight:700; opacity:.92; }
+    .chip{
+      font-size:12px; color: rgba(255,255,255,.80);
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      position:relative;
+      border-radius: var(--radius);
+      padding: 26px;
+      background: linear-gradient(135deg, rgba(255,255,255,.11), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      overflow:hidden;
+      min-height: 520px;
+    }
+    .glowBorder{
+      position:absolute; inset:-2px;
+      border-radius: calc(var(--radius) + 2px);
+      background: radial-gradient(900px 220px at 20% 0%, rgba(255,107,214,.26), transparent 60%),
+                  radial-gradient(700px 220px at 70% 0%, rgba(77,247,255,.22), transparent 60%),
+                  radial-gradient(900px 220px at 40% 100%, rgba(138,107,255,.18), transparent 60%);
+      pointer-events:none;
+      filter: blur(10px);
+      opacity:.9;
+    }
+
+    .side{ display:grid; gap:14px; }
+    .sideCard{
+      border-radius:22px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 70px rgba(0,0,0,.35);
+    }
+    .sideCard.soft{ opacity:.92; }
+    .sideCard h3{ margin:0 0 8px; font-size:18px; }
+    .sideCard ul{ margin:0; padding-left:18px; color: rgba(255,255,255,.78); line-height:1.75; }
+    .ctaLine{
+      margin-top:12px; padding-top:12px;
+      border-top:1px dashed rgba(255,255,255,.18);
+      color: rgba(255,255,255,.88);
+    }
+
+    .foot{
+      display:flex; gap:10px; align-items:center; justify-content:center;
+      color: rgba(255,255,255,.62); font-size:12px;
+      padding: 10px 0 0;
+    }
+    .footDot{
+      width:6px;height:6px;border-radius:999px;
+      background: linear-gradient(90deg, var(--cyan), var(--pink));
+      box-shadow: 0 0 24px rgba(77,247,255,.35);
+    }
+
+    /* Typography + UI */
+    .headline h1{
+      margin:0 0 8px;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height:1.05;
+      letter-spacing:.2px;
+    }
+    .accent{
+      background: linear-gradient(90deg, var(--pink), var(--cyan), var(--gold));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .sub{ font-size: clamp(16px, 2vw, 20px); opacity:.7; margin-left:6px; }
+    .lead{ margin:0; color: var(--muted); line-height:1.75; font-size:16px; max-width:60ch; }
+
+    .controls{ margin-top:18px; display:grid; gap:16px; }
+    .field{ display:grid; gap:8px; }
+    .field label{ font-size:13px; color: rgba(255,255,255,.80); }
+    .field input{
+      padding:14px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.20);
+      color: var(--txt);
+      outline:none;
+      transition: border-color .15s ease, transform .15s ease;
+    }
+    .field input:focus{ border-color: rgba(77,247,255,.35); transform: translateY(-1px); }
+
+    .buttons{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+
+    .btn{
+      position:relative;
+      border-radius:16px;
+      padding:12px 14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.20);
+      color: var(--txt);
+      cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      overflow:hidden;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.28); }
+    .btn:active{ transform: translateY(1px) scale(.99); }
+
+    .btn.primary{
+      padding:12px 16px;
+      background: linear-gradient(135deg, rgba(255,107,214,.30), rgba(138,107,255,.26), rgba(77,247,255,.20));
+      border-color: rgba(255,255,255,.22);
+    }
+    .btnIcon{
+      width:26px; height:26px;
+      display:grid; place-items:center;
+      border-radius:10px;
+      background: rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.16);
+    }
+    .btn.ghost{ background: rgba(0,0,0,.14); color: rgba(255,255,255,.85); }
+
+    .btnShine{
+      position:absolute;
+      inset:-40% -30%;
+      background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.20) 50%, transparent 65%);
+      transform: translateX(-45%) rotate(10deg);
+      animation: shine 2.8s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes shine{
+      0%, 60% { transform: translateX(-55%) rotate(10deg); opacity: 0; }
+      70% { opacity: .95; }
+      100% { transform: translateX(55%) rotate(10deg); opacity: 0; }
+    }
+
+    .meta{ display:grid; gap:10px; }
+    .metaRow{ display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+    #progressText{ font-size:12px; color: rgba(255,255,255,.78); }
+    .hint{ font-size:12px; color: rgba(255,255,255,.55); }
+
+    .bar{
+      height:10px;border-radius:999px;
+      background: rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+    }
+    .barFill{
+      height:100%; width:0%;
+      background: linear-gradient(90deg, rgba(77,247,255,.70), rgba(255,107,214,.55), rgba(255,211,122,.45));
+      transition: width .35s ease;
+    }
+
+    .mini{ margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; opacity:.95; }
+    .pill{
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.16);
+      backdrop-filter: blur(12px);
+    }
+
+    /* SPA pages */
+    .page{ display:none; }
+    .page.active{ display:block; }
+
+    .navline{
+      margin-top: 14px;
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+
+    /* Story typebox */
+    .typebox{
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.16);
+    }
+    .typed{ margin:0; white-space:pre-wrap; line-height:1.85; }
+    .small{ margin-top:10px; color: rgba(255,255,255,.68); font-size:12px; }
+
+    /* Gallery */
+    .grid{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (max-width: 860px){ .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 520px){ .grid{ grid-template-columns: 1fr; } }
+
+    .memCard{
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.16);
+      cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease;
+      min-height: 112px;
+    }
+    .memCard:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.28); }
+    .memCard h4{ margin:0 0 6px; font-size:16px; }
+    .memCard p{ margin:0; color: rgba(255,255,255,.74); font-size:13px; line-height:1.55; }
+    .memCard.locked p{ filter: blur(6px); user-select:none; }
+    .memCard.revealed{ border-color: rgba(77,247,255,.32); }
+
+    /* Finale */
+    .center{ text-align:center; }
+    .bigHeart{
+      font-size: 64px;
+      line-height: 1;
+      margin-top: 10px;
+      text-shadow: 0 12px 50px rgba(255,107,214,.25);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%,100%{ transform: scale(1); opacity: .95; }
+      50%{ transform: scale(1.06); opacity: 1; }
+    }
+    .panel{
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px dashed rgba(255,255,255,.22);
+      background: rgba(0,0,0,.14);
+    }
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      color: rgba(255,255,255,.82);
+      overflow-wrap:anywhere;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="bg"></div>
-    <main class="shell">
-        <section class="card glass">
-            <h1 class="title">มีอะไรจะบอกเธอ…</h1>
-            <p class="subtitle">เปิดทีละหน้า แล้วค่อยๆ อ่านนะ</p>
+  <div class="scene" aria-hidden="true">
+    <canvas id="stars"></canvas>
+    <div class="aurora a1"></div>
+    <div class="aurora a2"></div>
+    <div class="aurora a3"></div>
+    <div class="grain"></div>
+  </div>
 
-            <div class="form">
-                <label class="label">ชื่อแฟน (optional)</label>
-                <input id="nameInput" class="input" placeholder="เช่น มายด์ / บีม / …" maxlength="30" />
-                <button id="startBtn" class="btn primary">เริ่มภารกิจ 💘</button>
+  <main class="wrap">
+    <header class="top">
+      <div class="brand">
+        <span class="logo">✦</span>
+        <span class="brandText">OPAL.exe</span>
+      </div>
+      <div class="chip" id="chipTime"></div>
+    </header>
+
+    <section class="hero">
+      <!-- MAIN CARD (pages) -->
+      <div class="card">
+        <div class="glowBorder"></div>
+
+        <!-- PAGE 0: HOME -->
+        <div class="page active" data-page="home">
+          <div class="headline">
+            <h1>
+              ถึง <span class="accent" id="toNameBig">โอปอ</span>
+              <span class="sub">(opal)</span>
+            </h1>
+            <p class="lead">
+              เปิดทีละหน้า แล้วให้เราเล่า “ความรู้สึกจริงๆ” แบบค่อยๆ ละลายใจนะ 💗
+            </p>
+          </div>
+
+          <div class="controls">
+            <div class="field">
+              <label>ชื่อแฟน</label>
+              <input id="nameInput" maxlength="30" placeholder="โอปอ / opal" />
+            </div>
+
+            <div class="buttons">
+              <button class="btn primary" id="startBtn">
+                <span class="btnIcon">❤</span>
+                <span>เริ่มภารกิจ</span>
+                <span class="btnShine" aria-hidden="true"></span>
+              </button>
+
+              <button class="btn ghost" id="skipBtn">ดูหน้าอื่น ๆ →</button>
             </div>
 
             <div class="meta">
+              <div class="metaRow">
                 <span id="progressText">Progress: 0%</span>
-                <div class="bar">
-                    <div id="barFill" class="barFill"></div>
-                </div>
+                <span class="hint">*เว็บนี้จำชื่อด้วยเครื่องของคุณ</span>
+              </div>
+              <div class="bar"><div id="barFill" class="barFill"></div></div>
             </div>
-        </section>
+          </div>
 
-        <footer class="footer">
-            <a class="link" href="story.html">ไปหน้าถัดไป</a>
-        </footer>
-    </main>
+          <div class="mini">
+            <div class="pill">Glass UI</div>
+            <div class="pill">Aurora</div>
+            <div class="pill">Stars</div>
+            <div class="pill">One-file</div>
+          </div>
+        </div>
 
-    <script src="js/app.js"></script>
+        <!-- PAGE 1: STORY -->
+        <div class="page" data-page="story">
+          <div class="headline">
+            <h1>หน้าที่ 1: <span class="accent">เรื่องของเรา</span></h1>
+            <p class="lead">อ่านช้าๆ นะ <span id="toNameInline1" class="accent">โอปอ</span> 🙂</p>
+          </div>
+
+          <div class="typebox">
+            <p id="typed" class="typed"></p>
+            <div class="small">กด “ต่อไป” เมื่ออ่านจบ 🫶</div>
+          </div>
+
+          <div class="navline">
+            <button class="btn ghost" data-nav="home">← ย้อนกลับ</button>
+            <button class="btn primary" id="toGalleryBtn" disabled>
+              <span class="btnIcon">✦</span>
+              <span>ต่อไป</span>
+              <span class="btnShine" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- PAGE 2: GALLERY -->
+        <div class="page" data-page="gallery">
+          <div class="headline">
+            <h1>หน้าที่ 2: <span class="accent">Memories</span></h1>
+            <p class="lead">กดการ์ดให้ครบ 3 ใบเพื่อปลดล็อก “คำสุดท้าย”</p>
+          </div>
+
+          <div class="grid" id="grid"></div>
+
+          <div class="navline">
+            <button class="btn ghost" data-nav="story">← ย้อนกลับ</button>
+            <button class="btn primary" id="unlockBtn" disabled>
+              <span class="btnIcon">🔓</span>
+              <span>ปลดล็อก</span>
+              <span class="btnShine" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- PAGE 3: FINALE -->
+        <div class="page" data-page="finale">
+          <div class="headline center">
+            <div class="bigHeart" aria-hidden="true">❤</div>
+            <h1>เรารัก <span class="accent" id="toNameInline3">โอปอ</span></h1>
+            <p class="lead" id="randomLine"></p>
+          </div>
+
+          <div class="panel">
+            <div class="mono" id="hashLine"></div>
+            <div class="small">*ลายเซ็นเฉพาะ “เรา & เธอ” ทุกครั้งที่เปิด</div>
+          </div>
+
+          <div class="navline">
+            <button class="btn ghost" id="regenBtn">สุ่มประโยค 🎲</button>
+            <button class="btn primary" id="yesBtn">
+              <span class="btnIcon">💖</span>
+              <span>ตกลงเป็นแฟน…ต่อไปไหม</span>
+              <span class="btnShine" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="navline" style="justify-content:flex-start">
+            <button class="btn ghost" data-nav="home">↺ เริ่มใหม่</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SIDE -->
+      <aside class="side">
+        <div class="sideCard">
+          <h3>สถานะ</h3>
+          <ul>
+            <li>To: <span class="accent" id="toNameSide">โอปอ</span> (opal)</li>
+            <li>ระบบจำชื่อ + ความคืบหน้า</li>
+            <li>เปิดหลายหน้าในไฟล์เดียว</li>
+          </ul>
+          <div class="ctaLine">พร้อมยัง <span class="accent" id="toNameSide2">โอปอ</span> 🙂</div>
+        </div>
+
+        <div class="sideCard soft">
+          <h3>Tip</h3>
+          <p style="margin:0;color:rgba(255,255,255,.76);line-height:1.7">
+            ถ้าอยาก “เนียนขึ้น” ให้เปลี่ยนชื่อ repo เป็น <b>opal</b> แล้วเปิด GitHub Pages
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="foot">
+      <span class="footDot"></span>
+      <span>Made with love for Opal</span>
+    </footer>
+  </main>
+
+  <script>
+    // ===== State =====
+    const KEY = "love_spa_v1";
+    const state = {
+      name: "โอปอ",
+      step: 0,          // 0 home, 1 story, 2 gallery, 3 finale
+      revealed: {},     // gallery
+      lastLineIdx: 0
+    };
+
+    function load(){
+      try{
+        const raw = localStorage.getItem(KEY);
+        if(raw) Object.assign(state, JSON.parse(raw));
+      }catch{}
+    }
+    function save(){
+      localStorage.setItem(KEY, JSON.stringify(state));
+    }
+
+    // ===== Utilities =====
+    const $ = (q, el=document) => el.querySelector(q);
+    const $$ = (q, el=document) => Array.from(el.querySelectorAll(q));
+
+    function setProgress(step){
+      state.step = Math.max(state.step, step);
+      save();
+      syncProgressUI();
+    }
+
+    function progressPercent(){
+      const pct = Math.round((Math.min(state.step, 3) / 3) * 100);
+      return isFinite(pct) ? pct : 0;
+    }
+
+    function syncNames(){
+      const show = state.name?.trim() || "โอปอ";
+      $("#toNameBig").textContent = show;
+      $("#toNameInline1").textContent = show;
+      $("#toNameInline3").textContent = show;
+      $("#toNameSide").textContent = show;
+      $("#toNameSide2").textContent = show;
+      const nameInput = $("#nameInput");
+      if(nameInput && !nameInput.value) nameInput.value = show;
+    }
+
+    function syncProgressUI(){
+      const pct = progressPercent();
+      const t = $("#progressText");
+      const b = $("#barFill");
+      if(t) t.textContent = `Progress: ${pct}%`;
+      if(b) b.style.width = `${pct}%`;
+    }
+
+    // ===== Router (hash SPA) =====
+    function showPage(name){
+      $$(".page").forEach(p => p.classList.toggle("active", p.dataset.page === name));
+      location.hash = name;
+
+      // page-specific hooks
+      if(name === "home"){
+        setProgress(0);
+      }
+      if(name === "story"){
+        setProgress(1);
+        startStoryTypewriter();
+      }
+      if(name === "gallery"){
+        setProgress(2);
+        renderGallery();
+      }
+      if(name === "finale"){
+        setProgress(3);
+        refreshFinale();
+      }
+      syncNames();
+      syncProgressUI();
+    }
+
+    window.addEventListener("hashchange", () => {
+      const page = (location.hash || "#home").slice(1);
+      if(["home","story","gallery","finale"].includes(page)) showPage(page);
+    });
+
+    // ===== Time chip =====
+    function initTimeChip(){
+      const chip = $("#chipTime");
+      const tick = () => {
+        const d = new Date();
+        const hh = String(d.getHours()).padStart(2,"0");
+        const mm = String(d.getMinutes()).padStart(2,"0");
+        chip.textContent = `Bangkok • ${hh}:${mm}`;
+      };
+      tick();
+      setInterval(tick, 10000);
+    }
+
+    // ===== Stars canvas =====
+    function initStars(){
+      const c = $("#stars");
+      if(!c) return;
+      const ctx = c.getContext("2d");
+      let w,h,stars;
+
+      const resize = () => {
+        w = c.width = Math.floor(innerWidth * devicePixelRatio);
+        h = c.height = Math.floor(innerHeight * devicePixelRatio);
+        c.style.width = "100%";
+        c.style.height = "100%";
+
+        const count = Math.min(280, Math.floor((innerWidth * innerHeight) / 6500));
+        stars = Array.from({length: count}, () => ({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          r: (Math.random()*1.4 + .3)*devicePixelRatio,
+          a: Math.random()*.7 + .12,
+          s: (Math.random()*.45 + .08)*devicePixelRatio,
+          tw: Math.random()*.04 + .01
+        }));
+      };
+
+      const draw = (t) => {
+        ctx.clearRect(0,0,w,h);
+        const g = ctx.createRadialGradient(w*0.5, h*0.4, 0, w*0.5, h*0.4, Math.max(w,h)*0.7);
+        g.addColorStop(0, "rgba(255,255,255,0.02)");
+        g.addColorStop(1, "rgba(0,0,0,0.22)");
+        ctx.fillStyle = g;
+        ctx.fillRect(0,0,w,h);
+
+        for(const st of stars){
+          st.y += st.s;
+          if(st.y > h+20){ st.y=-20; st.x=Math.random()*w; }
+          const tw = 0.5 + 0.5*Math.sin(t*st.tw);
+          const alpha = st.a*(0.55 + tw*0.45);
+          ctx.beginPath();
+          ctx.arc(st.x, st.y, st.r, 0, Math.PI*2);
+          ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      };
+
+      addEventListener("resize", resize, {passive:true});
+      resize();
+      requestAnimationFrame(draw);
+    }
+
+    // ===== Story typewriter =====
+    const storyText = () => [
+      `${state.name || "โอปอ"}… ขอบคุณที่เข้ามาในชีวิตเรา`,
+      "บางคนเข้ามาแบบธรรมดา… แต่ทำให้ทุกอย่างไม่ธรรมดาอีกต่อไป",
+      "ตั้งแต่มีเธอ โลกมันใจดีกับเราขึ้นแบบแปลกๆ",
+      `เราอาจไม่เก่งเรื่องหวาน แต่เราเก่งเรื่อง “รัก${state.name || "เธอ"}” นะ`,
+      "ถ้าวันไหนเหนื่อย กอดเราได้เลยนะ… เราอยู่ข้างเธอเสมอ"
+    ].join("\n\n");
+
+    let typingRunning = false;
+    async function typewriter(el, text, speed=16){
+      el.textContent = "";
+      for(let i=0;i<text.length;i++){
+        el.textContent += text[i];
+        const jitter = (i%11===0)? 35:0;
+        await new Promise(r=>setTimeout(r, speed + jitter));
+      }
+    }
+
+    async function startStoryTypewriter(){
+      if(typingRunning) return;
+      typingRunning = true;
+      const typed = $("#typed");
+      const nextBtn = $("#toGalleryBtn");
+      if(nextBtn) nextBtn.disabled = true;
+
+      await typewriter(typed, storyText(), 16);
+
+      if(nextBtn) nextBtn.disabled = false;
+      typingRunning = false;
+    }
+
+    // ===== Gallery =====
+    const cards = [
+      { title:"วันที่เราหัวเราะ", body:"เสียงหัวเราะของเธอ ทำให้วันที่หนักๆ เบาลงได้จริงๆ" },
+      { title:"วันที่เราผ่านอะไรด้วยกัน", body:"เราไม่สัญญาว่าทุกวันจะดี แต่สัญญาว่าจะไปด้วยกัน" },
+      { title:"วันที่เราเงียบ", body:"ถึงไม่พูดเยอะ แต่ใจเราพูดว่า ‘รัก’ ตลอด" },
+      { title:"วันที่เธอเหนื่อย", body:"พักได้เลยนะ เราจะเป็นที่ปลอดภัยให้เธอ" },
+      { title:"วันที่เธอเก่งมาก", body:"เราภูมิใจในตัวเธอมากกว่าที่เธอคิดอีก" },
+      { title:"วันที่ธรรมดา", body:"ความธรรมดาที่มีเธออยู่ด้วย มันดีที่สุดแล้ว" }
+    ];
+
+    function revealedCount(){
+      return Object.values(state.revealed || {}).filter(Boolean).length;
+    }
+
+    function renderGallery(){
+      const grid = $("#grid");
+      const unlockBtn = $("#unlockBtn");
+      const need = 3;
+
+      grid.innerHTML = "";
+      cards.forEach((c, idx) => {
+        const revealed = !!state.revealed[idx];
+        const el = document.createElement("div");
+        el.className = `memCard ${revealed ? "revealed" : "locked"}`;
+
+        el.innerHTML = `<h4>${c.title}</h4><p>${c.body}</p>`;
+        el.addEventListener("click", () => {
+          state.revealed[idx] = true;
+          save();
+          el.classList.remove("locked");
+          el.classList.add("revealed");
+
+          if(revealedCount() >= need) unlockBtn.disabled = false;
+        });
+
+        grid.appendChild(el);
+      });
+
+      unlockBtn.disabled = !(revealedCount() >= need);
+    }
+
+    // ===== Finale random + signature =====
+    const finaleLines = [
+      "ขอบคุณที่อยู่ด้วยกันนะ",
+      "เธอคือความสบายใจของเรา",
+      "เราจะรักเธอให้เหมือนวันแรก…แต่เก่งกว่าเดิม",
+      "ถ้าวันไหนไม่ไหว กอดเราได้เลย",
+      "ขอให้เรายิ้มด้วยกันไปนานๆ",
+      "รักแบบที่ไม่ต้องพิสูจน์อะไรอีกแล้ว"
+    ];
+
+    function xmur3(str){
+      let h = 1779033703 ^ str.length;
+      for(let i=0;i<str.length;i++){
+        h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+        h = (h << 13) | (h >>> 19);
+      }
+      return () => {
+        h = Math.imul(h ^ (h >>> 16), 2246822507);
+        h = Math.imul(h ^ (h >>> 13), 3266489909);
+        return (h ^= h >>> 16) >>> 0;
+      };
+    }
+    function mulberry32(a){
+      return () => {
+        let t = (a += 0x6D2B79F5);
+        t = Math.imul(t ^ (t >>> 15), t | 1);
+        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+    function getSignature(){
+      const base = `${state.name||"opal"}|${new Date().toISOString().slice(0,10)}|v1`;
+      const seed = xmur3(base)();
+      const rand = mulberry32(seed);
+      const hex = () => Math.floor(rand()*0xffffffff).toString(16).padStart(8,"0");
+      return `sig-${hex()}-${hex()}-${hex()}`;
+    }
+
+    function refreshFinale(){
+      const rnd = mulberry32(xmur3(`${Date.now()}|${state.name}`)());
+      const idx = Math.floor(rnd() * finaleLines.length);
+      state.lastLineIdx = idx;
+      save();
+
+      $("#randomLine").textContent = finaleLines[idx];
+      $("#hashLine").textContent = `// ${getSignature()}`;
+    }
+
+    // ===== Confetti =====
+    function confettiBurst(){
+      const n = 120;
+      const wrap = document.createElement("div");
+      wrap.style.position="fixed";
+      wrap.style.inset="0";
+      wrap.style.pointerEvents="none";
+      wrap.style.overflow="hidden";
+      document.body.appendChild(wrap);
+
+      const w = innerWidth, h = innerHeight;
+      for(let i=0;i<n;i++){
+        const s = document.createElement("span");
+        s.textContent = Math.random() > .5 ? "❤" : "✦";
+        s.style.position="absolute";
+        s.style.left = `${w*0.5 + (Math.random()-0.5)*80}px`;
+        s.style.top  = `${h*0.35 + (Math.random()-0.5)*60}px`;
+        s.style.fontSize = `${12 + Math.random()*18}px`;
+        s.style.opacity="0.95";
+        s.style.filter="drop-shadow(0 10px 18px rgba(0,0,0,.25))";
+        wrap.appendChild(s);
+
+        const dx = (Math.random()-0.5)*600;
+        const dy = (Math.random()-0.5)*400 - 250;
+        const dur = 900 + Math.random()*600;
+
+        s.animate(
+          [
+            { transform:`translate(0,0) rotate(0deg)`, opacity:1 },
+            { transform:`translate(${dx}px, ${dy}px) rotate(${720 + Math.random()*720}deg)`, opacity:0 }
+          ],
+          { duration: dur, easing:"cubic-bezier(.2,.7,.2,1)", fill:"forwards" }
+        );
+      }
+      setTimeout(()=>wrap.remove(), 1800);
+    }
+
+    // ===== Init =====
+    document.addEventListener("DOMContentLoaded", () => {
+      load();
+      initTimeChip();
+      initStars();
+      syncNames();
+      syncProgressUI();
+
+      // restore route
+      const page = (location.hash || "#home").slice(1);
+      if(["home","story","gallery","finale"].includes(page)) showPage(page);
+      else showPage("home");
+
+      // nav buttons (data-nav)
+      $$("[data-nav]").forEach(btn => {
+        btn.addEventListener("click", () => showPage(btn.dataset.nav));
+      });
+
+      // main actions
+      $("#startBtn").addEventListener("click", () => {
+        const name = ($("#nameInput").value || "").trim();
+        state.name = name || "โอปอ";
+        save();
+        syncNames();
+        showPage("story");
+      });
+
+      $("#skipBtn").addEventListener("click", () => showPage("story"));
+
+      $("#toGalleryBtn").addEventListener("click", () => showPage("gallery"));
+
+      $("#unlockBtn").addEventListener("click", () => showPage("finale"));
+
+      $("#regenBtn").addEventListener("click", refreshFinale);
+
+      $("#yesBtn").addEventListener("click", () => {
+        confettiBurst();
+        alert(`เย่! รัก${state.name || "โอปอ"}นะ 💖`);
+      });
+
+      // subtle parallax on card
+      const card = $(".card");
+      let raf = 0;
+      window.addEventListener("mousemove", (e) => {
+        if(!card) return;
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const x = (e.clientX / innerWidth - 0.5) * 6;
+          const y = (e.clientY / innerHeight - 0.5) * 6;
+          card.style.transform = `translate3d(0,0,0) rotateX(${-y}deg) rotateY(${x}deg)`;
+        });
+      }, { passive:true });
+      window.addEventListener("mouseleave", () => {
+        if(card) card.style.transform = "translate3d(0,0,0)";
+      });
+    });
+  </script>
 </body>
-
 </html>
